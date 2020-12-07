@@ -8,6 +8,9 @@ class UsersCtl {
         ctx.body = db[ctx.params.id * 1]
     }
     create(ctx){
+        ctx.verifyParams({
+            name: {type: 'string', required: true}
+        })
         db.push(ctx.request.body)
         ctx.body = ctx.request.body
     }
